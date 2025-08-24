@@ -1,0 +1,100 @@
+@use "global" as *;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination__prev {
+  border: 1px solid $green;
+  color: $green;
+  padding: rem(17) rem(18);
+  position: relative;
+  cursor: pointer;
+}
+
+.pagination__prev::before {
+  content: "";
+  position: absolute;
+  width: rem(8);
+  height: rem(16);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url(../images/common/pagination-prev.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: background 0.3s;
+}
+
+.pagination__prev:hover {
+  background-color: $green;
+  transition: background 0.3s;
+}
+
+.pagination__prev:hover.pagination__prev::before {
+  background-image: url(../images/common/pagination-prev_white.png);
+}
+
+.pagination__number {
+  border: 1px solid $green;
+  color: $green;
+  padding: rem(7) rem(13);
+  text-align: center;
+  font-family: $second-english-font-family;
+  font-size: rem(16);
+  font-weight: $bold;
+  margin-left: rem(12);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.pagination__number:hover {
+  background-color: $green;
+  color: $white;
+}
+
+.pagination__number--first {
+  margin-left: rem(42);
+}
+
+.pagination__number.is-active {
+  background-color: $green;
+  color: $white;
+}
+
+.pagination__next {
+  border: 1px solid $green;
+  color: $green;
+  padding: rem(17) rem(18);
+  margin-left: rem(40);
+  position: relative;
+  cursor: pointer;
+}
+
+.pagination__next::before {
+  content: "";
+  position: absolute;
+  width: rem(8);
+  height: rem(16);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url(../images/common/pagination-next.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: background 0.3s;
+}
+
+.pagination__next:hover {
+  background-color: $green;
+  transition: background 0.3s;
+}
+
+.pagination__next:hover.pagination__next::before {
+  background-image: url(../images/common/pagination-next_white.png);
+}
+
+.pagination__next--page-blog {
+  margin-left: rem(82);
+}
