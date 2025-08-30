@@ -2068,26 +2068,26 @@ textarea {
 	width: 100%;
 }
 
-.page-blog__img img {
-	-o-object-fit: cover;
+.page-blog__content img {
+	-o-object-fit: contain;
 	height: 100%;
 	margin: 1.25rem auto 0;
 	max-height: 37.5rem;
-	object-fit: cover;
-	width: auto;
+	object-fit: contain;
+	width: 100%;
 }
 
-.page-blog__text {
+.page-blog__content p {
 	color: #0D2936;
 	font-size: 1rem;
 	margin-top: 1.5rem;
 }
 
-.page-blog__list {
+.page-blog__content ul {
 	margin-top: 1.5rem;
 }
 
-.page-blog li {
+.page-blog__content li {
 	color: #0D2936;
 	font-size: 1rem;
 	line-height: 1.5;
@@ -2095,7 +2095,7 @@ textarea {
 	position: relative;
 }
 
-.page-blog li::before {
+.page-blog__content li::before {
 	background-image: url(../images/common/starfish-blue.png);
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -2107,7 +2107,7 @@ textarea {
 	width: 1.125rem;
 }
 
-.page-blog li:not(:first-child) {
+.page-blog__content li:not(:first-child) {
 	margin-top: 0.25rem;
 }
 
@@ -3926,15 +3926,15 @@ select {
 	margin-top: 2.375rem;
 }
 
-.page-blog__img img {
+.page-blog__content img {
 	margin-top: 2.375rem;
 }
 
-.page-blog__text {
+.page-blog__content p {
 	margin-top: 2.5rem;
 }
 
-.page-blog__list {
+.page-blog__content ul {
 	margin-top: 2.5rem;
 }
 

@@ -83,3 +83,27 @@ EOT;
     return $html;
 }
 add_filter('style_loader_tag', 'add_google_fonts_preconnect', 10, 4);
+
+
+function my_setup() {
+	add_theme_support( 'post-thumbnails' ); /* アイキャッチ */
+	add_theme_support( 'automatic-feed-links' ); /* RSSフィード */
+	add_theme_support( 'title-tag' ); /* タイトルタグ自動生成 */
+	add_theme_support(
+		'html5',
+		array( /* HTML5のタグで出力 */
+			'search-form',
+			'comment-form',
+			'comment-list',
+			'gallery',
+			'caption',
+		)
+	);
+}
+add_action( 'after_setup_theme', 'my_setup' );
+
+// ブログ一覧ページ抜粋の「[...]」を「...」に変更
+function my_excerpt_more($more) {
+  return '&#46;&#46;&#46;';
+}
+add_filter('excerpt_more', 'my_excerpt_more');
