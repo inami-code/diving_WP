@@ -144,16 +144,22 @@
                 </h3>
               </div>
               <div class="campaign-card__bottom campaign-card__bottom--widget">
-                <p class="campaign-card__text campaign-card__text--widget">
-                  全部コミコミ(お一人様)
-                </p>
+                <?php if (get_field('before_price') && ('after_price')): ?>
+                  <p class="campaign-card__text campaign-card__text--widget">
+                    全部コミコミ(お一人様)
+                  </p>
+                <?php endif; ?>
                 <div class="campaign-card__price">
-                  <p class="campaign-card__before campaign-card__before--widget">
-                    ¥<?php the_field('before_price'); ?>
-                  </p>
-                  <p class="campaign-card__after campaign-card__after--widget">
-                    ¥<?php the_field('after_price'); ?>
-                  </p>
+                  <?php if (get_field('before_price')): ?>
+                    <p class="campaign-card__before campaign-card__before--widget">
+                      ¥<?php the_field('before_price'); ?>
+                    </p>
+                  <?php endif; ?>
+                  <?php if (get_field('after_price')): ?>
+                    <p class="campaign-card__after campaign-card__after--widget">
+                      ¥<?php the_field('after_price'); ?>
+                    </p>
+                  <?php endif; ?>
                 </div>
               </div>
             </div>
