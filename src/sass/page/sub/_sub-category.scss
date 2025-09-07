@@ -34,8 +34,8 @@
   }
 }
 
-.sub-category__item {
-  display: inline-block;
+.sub-category__item a{
+  display: block;
   background-color: $white;
   color: $green;
   border: 1px solid $green;
@@ -46,12 +46,12 @@
   transition: all 0.3s;
 }
 
-.sub-category__item:hover {
+.sub-category__item a:hover {
   color: $white;
   background-color: $green;
 }
 
-.sub-category__item.is-active {
+.sub-category__item a.is-active {
   color: $white;
   background-color: $green;
 }

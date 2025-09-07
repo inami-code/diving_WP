@@ -6,12 +6,12 @@
       <h2 class="mv__title">diving</h2>
       <p class="mv__subtitle">into the ocean</p>
     </div>
-    <div class="mv__header-movie mv-movie">
+    <!-- <div class="mv__header-movie mv-movie">
       <div class="mv-movie__text">
         <h2 class="mv-movie__title">diving</h2>
         <p class="mv-movie__subtitle">into the ocean</p>
       </div>
-    </div>
+    </div> -->
 
     <!-- <div class="mv__bg-movie mv-movie-bg">
           <div class="mv-movie-bg__container">
@@ -264,52 +264,41 @@
     </div>
 
     <div class="blog__content blog-cards">
-      <a href="page-blog.html" class="blog-cards__item blog-card">
-        <figure class="blog-card__image">
-          <picture>
-            <source srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/blog_1.webp" type="image/webp">
-            <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/blog_1.jpg" alt="ブログ画像ライセンス取得" width="301" height="201" loading="lazy">
-          </picture>
-        </figure>
-        <div class="blog-card__body">
-          <time class="blog-card__date" datetime="2023-11-17">2023.11.17</time>
-          <h3 class="blog-card__title">ライセンス取得</h3>
-        </div>
-        <p class="blog-card__text">
-          ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>ここにテキストが入ります。ここにテキストが入ります。ここにテキスト
-        </p>
-      </a>
-      <a href="page-blog.html" class="blog-cards__item blog-card">
-        <figure class="blog-card__image">
-          <picture>
-            <source srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/blog_2.webp" type="image/webp">
-            <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/blog_2.jpg" alt="ブログ画像ウミガメと泳ぐ" width="301" height="201" loading="lazy">
-          </picture>
-        </figure>
-        <div class="blog-card__body">
-          <time class="blog-card__date" datetime="2023-11-17">2023.11.17</time>
-          <h3 class="blog-card__title">ウミガメと泳ぐ</h3>
-        </div>
-        <p class="blog-card__text">
-          ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>ここにテキストが入ります。ここにテキストが入ります。ここにテキスト
-        </p>
-      </a>
-      <a href="page-blog.html" class="blog-cards__item blog-card">
-        <figure class="blog-card__image">
-          <picture>
-            <source srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/blog_3.webp" type="image/webp">
-            <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/blog_3.jpg" alt="ブログ画像カクレクマノミ" width="301" height="201" loading="lazy">
-          </picture>
-        </figure>
-        <div class="blog-card__body">
-          <time class="blog-card__date" datetime="2023-11-17">2023.11.17</time>
-          <h3 class="blog-card__title">カクレクマノミ</h3>
-        </div>
-        <p class="blog-card__text">
-          ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>ここにテキストが入ります。ここにテキストが入ります。ここにテキスト
-        </p>
-      </a>
+      <?php
+      $args = array(
+        'post_type' => 'post', // 投稿タイプ（通常投稿）
+        'posts_per_page' => 3, // 3件だけ表示
+      );
+      $the_query = new WP_Query($args);
+      ?>
+      <?php if ($the_query->have_posts()) : ?>
+        <?php while ($the_query->have_posts()): $the_query->the_post(); ?>
+          <a href="<?php the_permalink(); ?>" class="blog-cards__item blog-card">
+            <figure class="blog-card__image">
+              <?php if (has_post_thumbnail()): ?>
+                <?php the_post_thumbnail('full', array(
+                  'alt' => get_the_title() . 'のアイキャッチ画像',
+                  'width' => 345,
+                  'height' => 231
+                )); ?>
+              <?php else: ?>
+                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/noimage.jpg" alt="noimage" width="345" height="231">
+              <?php endif; ?>
+            </figure>
+            <div class="blog-card__body">
+              <time class="blog-card__date" datetime="<?php the_time('c'); ?>"><?php the_time('Y/m/d'); ?></time>
+              <h3 class="blog-card__title"><?php the_title(); ?></h3>
+            </div>
+            <p class="blog-card__text">
+              <?php the_excerpt(); ?>
+            </p>
+          </a>
+        <?php endwhile; ?>
+        <?php wp_reset_postdata(); // クエリをリセット 
+        ?>
+      <?php endif; ?>
     </div>
+
     <div class="blog__button">
       <a href="blog.html" class="button"> View more<span></span> </a>
     </div>

@@ -16,7 +16,7 @@
           申し訳ありません。<br>お探しのページが見つかりません。
         </p>
         <div class="sub-404__button">
-          <a href="information.html" class="button button--white">Page&nbsp;TOP<span></span>
+          <a href="<?php echo home_url('/') ?>" class="button button--white">Page&nbsp;TOP<span></span>
           </a>
         </div>
       </div>

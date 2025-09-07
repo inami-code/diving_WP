@@ -34,7 +34,7 @@
         </div>
         <p class="contact__text">ご予約・お問い合わせはコチラ</p>
         <div class="contact__button">
-          <a href="contact.html" class="button">
+          <a href="<?php echo CONTACT_URL; ?>" class="button">
             Contact us<span></span>
           </a>
         </div>
@@ -47,7 +47,7 @@
     <div class="footer__inner inner">
       <div class="footer__wrapper">
         <div class="footer__logo">
-          <a class="footer__logo-link" href="index.html">
+          <a class="footer__logo-link" href="<?php echo HOME_URL; ?>">
             <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/codeups_logo.svg" alt="CodeUpsロゴ" width="120" height="45">
           </a>
         </div>
@@ -68,44 +68,44 @@
             <div class="sp-nav__text-wrap">
               <ul class="sp-nav__container">
                 <li class="sp-nav__item sp-nav__item--bold">
-                  <a href="campaign.html">キャンペーン</a>
+                  <a href="<?php echo CAMPAIGN_URL; ?>">キャンペーン</a>
                 </li>
                 <li class="sp-nav__item">
-                  <a href="campaign.html">ライセンス取得</a>
+                  <a href="<?php echo CAMPAIGN_URL; ?>">ライセンス取得</a>
                 </li>
                 <li class="sp-nav__item">
-                  <a href="campaign.html">貸切体験ダイビング</a>
+                  <a href="<?php echo CAMPAIGN_URL; ?>">貸切体験ダイビング</a>
                 </li>
                 <li class="sp-nav__item">
-                  <a href="campaign.html">ナイトダイビング</a>
+                  <a href="<?php echo CAMPAIGN_URL; ?>">ナイトダイビング</a>
                 </li>
               </ul>
 
               <ul class="sp-nav__container">
                 <li class="sp-nav__item sp-nav__item--bold">
-                  <a href="about.html">私たちについて</a>
+                  <a href="<?php echo ABOUT_URL; ?>">私たちについて</a>
                 </li>
               </ul>
             </div>
             <div class="sp-nav__text-wrap">
               <ul class="sp-nav__container sp-nav__container--mt">
                 <li class="sp-nav__item sp-nav__item--bold">
-                  <a href="information.html">ダイビング情報</a>
+                  <a href="<?php echo INFO_URL; ?>">ダイビング情報</a>
                 </li>
                 <li class="sp-nav__item">
-                  <a href="information.html?active-tab=tab-1">ライセンス講習</a>
+                  <a href="<?php echo INFO_URL; ?>?active-tab=tab-1">ライセンス講習</a>
                 </li>
                 <li class="sp-nav__item">
-                  <a href="information.html?active-tab=tab-3">体験ダイビング</a>
+                  <a href="<?php echo INFO_URL; ?>?active-tab=tab-3">体験ダイビング</a>
                 </li>
                 <li class="sp-nav__item">
-                  <a href="information.html?active-tab=tab-2">ファンダイビング</a>
+                  <a href="<?php echo INFO_URL; ?>?active-tab=tab-2">ファンダイビング</a>
                 </li>
               </ul>
 
               <ul class="sp-nav__container">
                 <li class="sp-nav__item sp-nav__item--bold">
-                  <a href="blog.html">ブログ</a>
+                  <a href="<?php echo BLOG_URL; ?>">ブログ</a>
                 </li>
               </ul>
             </div>
@@ -114,22 +114,22 @@
             <div class="sp-nav__text-wrap">
               <ul class="sp-nav__container">
                 <li class="sp-nav__item sp-nav__item--bold">
-                  <a href="voice.html">お客様の声</a>
+                  <a href="<?php echo VOICE_URL; ?>">お客様の声</a>
                 </li>
               </ul>
 
               <ul class="sp-nav__container">
                 <li class="sp-nav__item sp-nav__item--bold">
-                  <a href="price.html">料金一覧</a>
+                  <a href="<?php echo PRICE_URL; ?>">料金一覧</a>
                 </li>
                 <li class="sp-nav__item">
-                  <a href="price.html#table1">ライセンス講習</a>
+                  <a href="<?php echo PRICE_URL; ?>#table1">ライセンス講習</a>
                 </li>
                 <li class="sp-nav__item">
-                  <a href="price.html#table2">体験ダイビング</a>
+                  <a href="<?php echo PRICE_URL; ?>#table2">体験ダイビング</a>
                 </li>
                 <li class="sp-nav__item">
-                  <a href="price.html#table3">ファンダイビング</a>
+                  <a href="<?php echo PRICE_URL; ?>#table3">ファンダイビング</a>
                 </li>
               </ul>
             </div>
@@ -137,25 +137,25 @@
             <div class="sp-nav__text-wrap">
               <ul class="sp-nav__container sp-nav__container--mt">
                 <li class="sp-nav__item sp-nav__item--bold">
-                  <a href="faq.html">よくある質問</a>
+                  <a href="<?php echo FAQ_URL; ?>">よくある質問</a>
                 </li>
               </ul>
 
               <ul class="sp-nav__container">
                 <li class="sp-nav__item sp-nav__item--bold">
-                  <a href="privacy-policy.html">プライバシー<br class="u-mobile">ポリシー</a>
+                  <a href="<?php echo PRIVACY_URL; ?>">プライバシー<br class="u-mobile">ポリシー</a>
                 </li>
               </ul>
 
               <ul class="sp-nav__container">
                 <li class="sp-nav__item sp-nav__item--bold">
-                  <a href="terms-of-service.html">利用規約</a>
+                  <a href="<?php echo TERMS_URL; ?>">利用規約</a>
                 </li>
               </ul>
 
               <ul class="sp-nav__container">
                 <li class="sp-nav__item sp-nav__item--bold">
-                  <a href="contact.html">お問い合わせ</a>
+                  <a href="<?php echo CONTACT_URL; ?>">お問い合わせ</a>
                 </li>
               </ul>
             </div>
@@ -169,7 +169,7 @@
   </footer>
 
   <div class="to-top">
-    <a href="index.html"><span></span></a>
+    <a href="<?php echo HOME_URL; ?>"><span></span></a>
   </div>
   <!-- svgスプラウト -->
   <svg style="display: none">

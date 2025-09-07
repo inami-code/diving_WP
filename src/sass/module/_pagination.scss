@@ -5,15 +5,16 @@
   justify-content: center;
 }
 
-.pagination__prev {
+.pagination__prev a {
   border: 1px solid $green;
   color: $green;
   padding: rem(17) rem(18);
   position: relative;
-  cursor: pointer;
+  display: block;
 }
 
-.pagination__prev::before {
+
+.pagination__prev a::before {
   content: "";
   position: absolute;
   width: rem(8);
@@ -25,14 +26,15 @@
   background-repeat: no-repeat;
   background-size: cover;
   transition: background 0.3s;
+
 }
 
-.pagination__prev:hover {
+.pagination__prev a:hover {
   background-color: $green;
   transition: background 0.3s;
 }
 
-.pagination__prev:hover.pagination__prev::before {
+.pagination__prev a:hover::before {
   background-image: url(../images/common/pagination-prev_white.png);
 }
 
@@ -63,16 +65,16 @@
   color: $white;
 }
 
-.pagination__next {
+.pagination__next a {
   border: 1px solid $green;
   color: $green;
   padding: rem(17) rem(18);
   margin-left: rem(40);
   position: relative;
-  cursor: pointer;
+  display: block;
 }
 
-.pagination__next::before {
+.pagination__next a::before {
   content: "";
   position: absolute;
   width: rem(8);
@@ -86,15 +88,118 @@
   transition: background 0.3s;
 }
 
-.pagination__next:hover {
+.pagination__next a:hover {
   background-color: $green;
   transition: background 0.3s;
 }
 
-.pagination__next:hover.pagination__next::before {
+.pagination__next a:hover::before {
   background-image: url(../images/common/pagination-next_white.png);
 }
 
 .pagination__next--page-blog {
   margin-left: rem(82);
+}
+
+//*=========================================================
+//# ページネーション
+//=========================================================*
+/* PC: 数字は6個まで */
+.sub-blog__pagination .page-numbers.is-numeric:nth-of-type(n+6) {
+  display: none;
+}
+
+/* スマホ: 数字は4個まで */
+@media (max-width: 768px) {
+  .sub-blog__pagination .page-numbers.is-numeric:nth-of-type(n+4) {
+    display: none;
+  }
+}
+
+
+.pagination .page-numbers {
+  border: 1px solid $green;
+  color: $green;
+  padding: rem(7) rem(13);
+  text-align: center;
+  font-family: $second-english-font-family;
+  font-size: rem(16);
+  font-weight: $bold;
+  margin-left: rem(12);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.pagination .page-numbers:hover {
+  background-color: $green;
+  color: $white;
+}
+
+.pagination .page-numbers.current {
+  background-color: $green;
+  color: $white;
+}
+
+.pagination .prev{
+  border: 1px solid $green;
+  color: $green;
+  padding: rem(17) rem(18);
+  position: relative;
+  display: block;
+}
+
+
+.pagination .prev::before {
+  content: "";
+  position: absolute;
+  width: rem(8);
+  height: rem(16);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url(../images/common/pagination-prev.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: background 0.3s;
+
+}
+
+.pagination .prev:hover {
+  background-color: $green;
+  transition: background 0.3s;
+}
+
+.pagination .prev:hover::before {
+  background-image: url(../images/common/pagination-prev_white.png);
+}
+
+.pagination .next{
+  border: 1px solid $green;
+  color: $green;
+  padding: rem(17) rem(18);
+  position: relative;
+  display: block;
+}
+
+.pagination .next::before {
+  content: "";
+  position: absolute;
+  width: rem(8);
+  height: rem(16);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url(../images/common/pagination-next.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: background 0.3s;
+}
+
+.pagination .next:hover {
+  background-color: $green;
+  transition: background 0.3s;
+}
+
+.pagination .next:hover::before {
+  background-image: url(../images/common/pagination-next_white.png);
 }
