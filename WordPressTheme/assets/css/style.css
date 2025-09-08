@@ -1694,13 +1694,7 @@ select {
 	font-size: 1rem;
 }
 
-.form__checkbox {
-	display: flex;
-	flex-direction: column;
-	gap: 0.25rem;
-}
-
-[type=checkbox] + span {
+input[type=checkbox] + span {
 	display: block;
 	font-size: 1rem;
 	font-weight: 400;
@@ -1722,12 +1716,12 @@ select {
 	width: 0.9375rem;
 }
 
-[type=checkbox]:checked + span::after {
+[type=checkbox] + span::after {
 	opacity: 0;
 	transition: opacity 0.3s;
 }
 
-[type=checkbox] + span::after {
+[type=checkbox]:checked + span::after {
 	border-bottom: 2px solid #c94800;
 	border-left: 2px solid #c94800;
 	content: "";
@@ -1798,6 +1792,58 @@ textarea {
 .form__button {
 	margin-top: 1.5rem;
 	text-align: center;
+}
+
+.form__button [type=submit] {
+	color: #fff;
+	display: inline-block;
+}
+
+/*=========================================================
+# ContactForm7
+=========================================================*/
+
+.form__checkbox .wpcf7-checkbox {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+}
+
+.wpcf7-list-item {
+	margin: 0;
+}
+
+.wpcf7-spinner {
+	display: none !important;
+}
+
+.wpcf7-not-valid {
+	background-color: rgba(201, 72, 0, 0.2);
+	border-color: #c94800;
+}
+
+.form__item .wpcf7-not-valid::-moz-placeholder {
+	color: #fff;
+	font-weight: 400;
+}
+
+.form__item .wpcf7-not-valid::placeholder {
+	color: #fff;
+	font-weight: 400;
+}
+
+.form .wpcf7-not-valid-tip {
+	display: none;
+}
+
+.form .error-message {
+	color: #c94800;
+	display: none;
+}
+
+.form:has(.wpcf7-not-valid-tip) .error-message {
+	display: block;
+	font-size: 0.875rem;
 }
 
 .hamburger {

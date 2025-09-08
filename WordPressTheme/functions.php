@@ -237,8 +237,9 @@ add_action( 'pre_get_posts', 'my_add_sort_by_meta' );
 
 
 
-/* サイドバー日付アーカイブ
+/* サイドバー
 ---------------------------------------------------------- */
+// 日付アーカイブ
 function my_custom_archives() {
     global $wpdb;
 
@@ -295,3 +296,26 @@ function change_posts_per_page_voice($query) {
     }
 }
 add_action( 'pre_get_posts', 'change_posts_per_page_voice' );
+
+
+/* コンタクトフォーム
+---------------------------------------------------------- */
+// Contact Form 7で自動挿入されるPタグ、brタグを削除
+add_filter('wpcf7_autop_or_not', 'wpcf7_autop_return_false');
+function wpcf7_autop_return_false() {
+  return false;
+}
+
+// サンクスページへリダイレクト
+function redirect_to_thanks_page() {
+	if ( is_page( 'contact' ) ) {
+		echo <<<EOD
+		<script>
+		document.addEventListener( 'wpcf7mailsent', function() {
+			window.location = '/contact/thanks/';
+		});
+		</script>
+		EOD;
+	}
+}
+add_action( 'wp_footer', 'redirect_to_thanks_page' );

@@ -1,6 +1,6 @@
 @use "global" as *;
 
-.form{
+.form {
   text-align: center;
 }
 
@@ -78,13 +78,8 @@ select {
   color: #ddf0f1;
 }
 
-.form__checkbox {
-  display: flex;
-  flex-direction: column;
-  gap: rem(4);
-}
 
-[type="checkbox"]+span {
+input[type="checkbox"]+span {
   display: block;
   font-weight: $regular;
   font-size: rem(16);
@@ -106,12 +101,12 @@ select {
   display: block;
 }
 
-[type="checkbox"]:checked+span::after {
+[type="checkbox"]+span::after {
   opacity: 0;
   transition: opacity 0.3s;
 }
 
-[type="checkbox"]+span::after {
+[type="checkbox"]:checked+span::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -196,4 +191,53 @@ textarea {
   @include mq("md") {
     margin-top: rem(40);
   }
+}
+
+.form__button [type="submit"] {
+  color: $white;
+  display: inline-block;
+}
+
+/*=========================================================
+# ContactForm7
+=========================================================*/
+
+.form__checkbox .wpcf7-checkbox {
+  display: flex;
+  flex-direction: column;
+  gap: rem(4);
+}
+
+.wpcf7-list-item {
+  margin: 0;
+}
+
+
+.wpcf7-spinner {
+  display: none !important;
+}
+
+.wpcf7-not-valid {
+  background-color: rgba(201, 72, 0, 0.2);
+  border-color: #c94800;
+}
+
+.form__item .wpcf7-not-valid::placeholder {
+  color: $white;
+  font-weight: $regular;
+}
+
+
+.form .wpcf7-not-valid-tip {
+  display: none;
+}
+
+.form .error-message {
+  color: #c94800;
+  display: none; 
+}
+
+.form:has(.wpcf7-not-valid-tip) .error-message {
+  display: block;
+  font-size: rem(14);
 }

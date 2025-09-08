@@ -39,11 +39,11 @@
                 </div>
               </div>
             </a>
-          <?php endwhile;
-          wp_reset_postdata(); ?>
+          <?php endwhile; ?>
         <?php else: ?>
           <p>現在、人気記事はありません</p>
         <?php endif; ?>
+        <?php wp_reset_postdata(); ?>
       </div>
     </div>
     <div class="widget__review">
@@ -89,16 +89,16 @@
                   <?php the_title(); ?>
                 </h4>
               </div>
-            <?php endwhile;
-            wp_reset_postdata(); ?>
+            <?php endwhile; ?>
+            <div class="widget__button">
+              <a href="<?php echo VOICE_URL; ?>" class="button">
+                View more<span></span>
+              </a>
+            </div>
           <?php else: ?>
             <p>現在、口コミはありません</p>
           <?php endif; ?>
-          <div class="widget__button">
-            <a href="<?php echo VOICE_URL; ?>" class="button">
-              View more<span></span>
-            </a>
-          </div>
+          <?php wp_reset_postdata(); ?>
         </div>
       </div>
     </div>
@@ -122,7 +122,7 @@
           'order'           => 'DESC',              // 降順（閲覧数が多い順）でソート
           'post_status'     => 'publish',           // 投稿ステータスは公開済み
           'posts_per_page'  => 2,                   // 投稿表示件数は5件
-          'post__in'        => array(200, 201),
+          'post__in'        => array(200, 201), // 特定の記事を表示する記述
         );
         $campaign_query = new WP_Query($campaign_args);
         if ($campaign_query->have_posts()):
@@ -162,16 +162,17 @@
                   <?php endif; ?>
                 </div>
               </div>
+
             </div>
-          <?php endwhile;
-          wp_reset_postdata(); ?>
+          <?php endwhile; ?>
+          <div class="widget__button">
+            <a href="<?php echo CAMPAIGN_URL; ?>" class="button"> View more<span></span> </a>
+          </div>
+
         <?php else: ?>
           <p>現在、キャンペーンはありません</p>
         <?php endif; ?>
-
-      </div>
-      <div class="widget__button">
-        <a href="<?php echo CAMPAIGN_URL; ?>" class="button"> View more<span></span> </a>
+        <?php wp_reset_postdata(); ?>
       </div>
     </div>
     <div class="widget__archive">

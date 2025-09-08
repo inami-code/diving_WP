@@ -345,5 +345,5 @@ jQuery(function ($) {
     $(this).children('.faq-box__icon').toggleClass('is-close');
   });
 
-});
 
+});  

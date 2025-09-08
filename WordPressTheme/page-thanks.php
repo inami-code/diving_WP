@@ -7,7 +7,9 @@
   <div class="breadcrumb">
     <div class="breadcrumb__inner inner">
       <p class="breadcrumb__text">
-        TOP<span>&gt;</span>お問い合わせ<span>&gt;</span>送信完了
+              <?php if(function_exists('bcn_display')){
+                bcn_display();
+              } ?>
       </p>
     </div>
   </div>
