@@ -4,13 +4,7 @@
   <h1 class="sub-mv__title">Voice</h1>
 </div>
 <!-- パンくずリスト -->
-<div class="breadcrumb">
-  <div class="breadcrumb__inner inner">
-    <?php if (function_exists('bcn_display')) {
-      bcn_display();
-    } ?>
-  </div>
-</div>
+<?php get_template_part('parts/breadcrumb') ?>
 
 <div class="sub-voice top-sub-voice">
   <div class="sub-voice__inner inner">
@@ -71,6 +65,6 @@
       <?php endif; ?>
     </div>
     <?php get_template_part('parts/pagination') ?>
-
   </div>
-  <?php get_footer(); ?>
+</div>
+<?php get_footer(); ?>

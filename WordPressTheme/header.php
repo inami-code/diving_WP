@@ -6,15 +6,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <meta name="format-detection" content="telephone=no">
   <meta name="robots" content="noindex">
-  <!-- meta情報 -->
-  <title>CodeUps</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
   <?php wp_head(); ?>
 </head>
 
 <body>
-  <header class="header js-header js-animation">
+  <header class="header js-header">
     <div class="header__inner">
       <?php if (is_front_page()) : ?>
         <h1 class="header__logo">
@@ -43,13 +39,13 @@
                 <a href="<?php echo CAMPAIGN_URL; ?>">キャンペーン</a>
               </li>
               <li class="sp-nav__item">
-                <a href="<?php echo CAMPAIGN_URL; ?>">ライセンス取得</a>
+                <a href="<?php echo esc_url(get_term_link('license', 'campaign_genre')); ?>">ライセンス取得</a>
               </li>
               <li class="sp-nav__item">
-                <a href="<?php echo CAMPAIGN_URL; ?>">貸切体験ダイビング</a>
+                <a href="<?php echo esc_url(get_term_link('experience', 'campaign_genre')); ?>">貸切体験ダイビング</a>
               </li>
               <li class="sp-nav__item">
-                <a href="<?php echo CAMPAIGN_URL; ?>">ナイトダイビング</a>
+                <a href="<?php echo esc_url(get_term_link('fun', 'campaign_genre')); ?>">ナイトダイビング</a>
               </li>
             </ul>
 

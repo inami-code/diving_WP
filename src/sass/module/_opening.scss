@@ -1,32 +1,25 @@
 @use "global" as *;
 
-// .opening.is-hidden {
-//   display: none;
-//   visibility: hidden;
-// }
-
 .opening {
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  z-index: 100;
-}
-
-.opening__first {
-  width: 100%;
-  height: 100vh;
-
+  @include mq('md') {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 100;
+  }
 }
 
 .opening__mask {
-  display: block;
-  width: 100%;
-  height: 100vh;
-  background-color: $white;
+  @include mq('md') {
+    display: block;
+    width: 100%;
+    height: 100vh;
+    background-color: $white;
+  }
 }
 
 .opening__logo {
@@ -41,99 +34,91 @@
   visibility: hidden;
 
   @include mq("md") {
+    content: "";
+    position: absolute;
+    width: 100%;
     top: 55.8%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
   }
 }
 
 .opening__title {
-  font-size: rem(40);
-  letter-spacing: 0.52em;
-  text-indent: 0.52em;
-  line-height: 1.1;
-  font-weight: $regular;
-  font-family: $second-english-font-family;
-  text-transform: uppercase;
-  text-align: center;
-  color: $green;
-
   @include mq("md") {
     font-size: rem(80);
+    letter-spacing: 0.52em;
+    text-indent: 0.52em;
+    line-height: 1.1;
+    font-weight: $regular;
+    font-family: $second-english-font-family;
+    text-transform: uppercase;
+    text-align: center;
+    color: $green;
   }
 }
 
 .opening__subtitle {
-  font-size: rem(20);
-  line-height: 1;
-  font-family: $english-font-family;
-  text-align: center;
-  color: $green;
-  margin-top: rem(8);
-
   @include mq("md") {
+    font-size: rem(20);
+    line-height: 1;
+    font-family: $english-font-family;
+    text-align: center;
+    color: $green;
     margin-top: rem(12);
   }
 }
 
-
-// .opening__img {
-//   width: 100%;
-//   height: 100vh;
-//   // position: fixed;
-// }
-
 .opening__img-wrap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
+  @include mq('md') {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+  }
 }
 
 .opening__img-wrap img {
-  display: block;
-  height: 100vh;
-  width: 100%;
-  object-fit: cover;
-  aspect-ratio: 375 / 667;
-
   @include mq("md") {
+    display: block;
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
     aspect-ratio: 1440 / 768;
   }
 }
 
 .opening__img-mask {
+  @include mq('md') {
     position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  width: 100%;
-  height: 100vh;
-  z-index: 1;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+  }
 }
 
 .opening__left {
-  display: block;
-  width: 50%;
-  background-color: $white;
-
-  transform: translateY(0%);
+  @include mq('md') {
+    display: block;
+    width: 50%;
+    background-color: $white;
+    transform: translateY(0%);
+  }
 }
 
 
 
 .opening__right {
-  display: block;
-  width: 50%;
-  background-color: $white;
-
-  transform: translateY(0%);
-}
-
-@media (scripting: none) {
-  .opening {
-    display: none;
+  @include mq('md') {
+    display: block;
+    width: 50%;
+    background-color: $white;
+    transform: translateY(0%);
   }
-  .opening.is-hidden {
-display: block;
-}
 }

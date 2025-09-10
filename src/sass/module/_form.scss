@@ -198,6 +198,14 @@ textarea {
   display: inline-block;
 }
 
+.button [type="submit"] {
+  transition: 0.3s ease;
+}
+
+.button:hover [type="submit"] {
+  color: $green;
+}
+
 /*=========================================================
 # ContactForm7
 =========================================================*/
@@ -234,7 +242,7 @@ textarea {
 
 .form .error-message {
   color: #c94800;
-  display: none; 
+  display: none;
 }
 
 .form:has(.wpcf7-not-valid-tip) .error-message {

@@ -4,11 +4,7 @@
   <h1 class="sub-mv__title sub-mv__title--faq">faq</h1>
 </div>
 <!-- パンくずリスト -->
-<div class="breadcrumb">
-  <div class="breadcrumb__inner inner">
-    <p class="breadcrumb__text">TOP<span>&gt;</span>料金一覧</p>
-  </div>
-</div>
+<?php get_template_part('parts/breadcrumb') ?>
 
 <div class="sub-faq top-sub-faq">
   <div class="sub-faq__inner inner">

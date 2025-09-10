@@ -4,6 +4,7 @@
   display: inline-block;
   position: relative;
   background: $green;
+  border-left: 1px solid $green;
   width: rem(202);
   font-size: rem(14);
   font-family: $english-font-family;
@@ -21,7 +22,9 @@
 
 .button::after {
   content: "";
-  border: 1px solid $green;
+  border-top: 1px solid $green;
+  border-right: 1px solid $green;
+  border-bottom: 1px solid $green;
   position: absolute;
   background: $white;
   color: $green;

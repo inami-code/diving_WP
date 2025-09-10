@@ -54,11 +54,11 @@ function add_custom_scripts()
 
     // GSAP
     wp_enqueue_script(
-        'gsap', 
+        'gsap',
         'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js', // CDN URL
-        array(), 
-        '3.13.0', 
-        true 
+        array(),
+        '3.13.0',
+        true
     );
 
     // Swiper JS
@@ -341,3 +341,22 @@ function redirect_to_thanks_page()
     }
 }
 add_action('wp_footer', 'redirect_to_thanks_page');
+
+
+
+/* オープニングアニメーション呼び出し
+---------------------------------------------------------- */
+function mytheme_enqueue_scripts()
+{
+    // トップページのみ読み込む
+    if (is_front_page()) {
+        wp_enqueue_script(
+            'opening-animation', // ハンドル名
+            get_template_directory_uri() . '/assets/js/opening.js', // スクリプトのパス
+            array('gsap'), // 依存スクリプト（gsapを使う場合）
+            '1.0',
+            true // trueでフッターで読み込む
+        );
+    }
+}
+add_action('wp_enqueue_scripts', 'mytheme_enqueue_scripts');

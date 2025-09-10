@@ -4,13 +4,7 @@
   <h1 class="sub-mv__title">Price</h1>
 </div>
 <!-- パンくずリスト -->
-<div class="breadcrumb">
-  <div class="breadcrumb__inner inner">
-    <?php if (function_exists('bcn_display')) {
-      bcn_display();
-    } ?>
-  </div>
-</div>
+<?php get_template_part('parts/breadcrumb') ?>
 
 <div class="sub-price top-sub-price">
   <div class="sub-price__inner inner">

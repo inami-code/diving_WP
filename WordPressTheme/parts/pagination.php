@@ -1,6 +1,6 @@
-<div class="<?php if ( is_home('blog') ) echo 'sub-blog__pagination'; ?> 
-<?php if ( is_post_type_archive('campaign') ) echo 'sub-campaign__pagination'; ?> 
-<?php if ( is_post_type_archive('voice') ) echo 'sub-voice__pagination'; ?> 
+<div class="<?php if (is_home('blog')) echo 'sub-blog__pagination'; ?> 
+<?php if (is_post_type_archive('campaign')) echo 'sub-campaign__pagination'; ?> 
+<?php if (is_post_type_archive('voice')) echo 'sub-voice__pagination'; ?> 
 pagination top-pagination">
   <?php
   $links = paginate_links(array(

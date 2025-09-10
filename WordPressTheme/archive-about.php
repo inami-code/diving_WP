@@ -4,13 +4,7 @@
     <h1 class="sub-mv__title">About&nbsp;us</h1>
   </div>
   <!-- パンくずリスト -->
-  <div class="breadcrumb">
-    <div class="breadcrumb__inner inner">
-      <?php if (function_exists('bcn_display')) {
-        bcn_display();
-      } ?>
-    </div>
-  </div>
+  <?php get_template_part('parts/breadcrumb') ?>
 
   <div class="sub-about top-sub-about">
     <div class="sub-about__inner inner">
@@ -39,31 +33,31 @@
     </div>
   </div>
 
-<div class="sub-gallery top-sub-gallery">
-  <div class="sub-gallery__inner inner">
-    <div class="sub-gallery__section-title section-header">
-      <p class="section-header__en-title">Gallery</p>
-      <h2 class="section-header__jp-title">フォト</h2>
-    </div>
-    <div class="sub-gallery__modal js-modal-overlay"></div>
-    <div class="sub-gallery__items">
-      <?php if (have_posts()) : ?>
-        <?php while (have_posts()): the_post(); ?>
-          <?php $galleryImage = get_field('gallery'); ?>
-          <?php if ($galleryImage): ?>
-            <div class="sub-gallery__item js-modal-open">
-              <picture>
-                <img src="<?php echo esc_url($galleryImage['url']); ?>" 
-                     alt="<?php echo esc_attr($galleryImage['alt']); ?>" 
-                     width="<?php echo esc_url($galleryImage['width']); ?>" height="<?php echo esc_url($galleryImage['height']); ?>">
-              </picture>
-            </div>
-          <?php endif; ?>
-        <?php endwhile; ?>
-      <?php endif; ?>
+  <div class="sub-gallery top-sub-gallery">
+    <div class="sub-gallery__inner inner">
+      <div class="sub-gallery__section-title section-header">
+        <p class="section-header__en-title">Gallery</p>
+        <h2 class="section-header__jp-title">フォト</h2>
+      </div>
+      <div class="sub-gallery__modal js-modal-overlay"></div>
+      <div class="sub-gallery__items">
+        <?php if (have_posts()) : ?>
+          <?php while (have_posts()): the_post(); ?>
+            <?php $galleryImage = get_field('gallery'); ?>
+            <?php if ($galleryImage): ?>
+              <div class="sub-gallery__item js-modal-open">
+                <picture>
+                  <img src="<?php echo esc_url($galleryImage['url']); ?>"
+                    alt="<?php echo esc_attr($galleryImage['alt']); ?>"
+                    width="<?php echo esc_url($galleryImage['width']); ?>" height="<?php echo esc_url($galleryImage['height']); ?>">
+                </picture>
+              </div>
+            <?php endif; ?>
+          <?php endwhile; ?>
+        <?php endif; ?>
+      </div>
     </div>
   </div>
-</div>
 
 
   <?php get_footer(); ?>

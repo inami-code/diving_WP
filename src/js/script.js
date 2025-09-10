@@ -2,42 +2,6 @@ jQuery(function ($) {
   // この中であればWordpressでも「$」が使用可能になる
 
   // ------------------------------------
-  //ローディングアニメーション
-  // ------------------------------------
-  $.cookie("myCookie", "myValue", {
-    path: "/",
-    secure: true,
-    sameSite: "None",
-  });
-
-  $(document).ready(function () {
-    const keyName = "visited";
-    const keyValue = true;
-
-    if (!sessionStorage.getItem(keyName)) {
-      // sessionStorageにキーと値を追加
-      sessionStorage.setItem(keyName, keyValue);
-
-      // ここに初回アクセス時の処理
-      $(".mv-movie-bg").addClass("is-active");
-      // アニメーション終了時にクラスを削除
-      $(".mv-movie-bg").on("animationend", function () {
-        $(this).removeClass("is-active");
-      });
-      $(".mv-movie-text").addClass("is-active");
-
-      // アニメーション終了時にクラスを削除
-      $(".mv-movie-bg").on("animationend", function () {
-        $(this).removeClass("is-active");
-      });
-    } else {
-      // ここに通常アクセス時の処理
-      $(".mv-movie-bg").removeClass("is-active");
-      $(".mv-movie-text").removeClass("is-active");
-    }
-  });
-
-  // ------------------------------------
   //ドロワーメニュー
   // ------------------------------------
   $(".js-hamburger").click(function () {
@@ -59,23 +23,47 @@ jQuery(function ($) {
   });
 
   // ------------------------------------
-  // ハンバーガーメニュー展開時背景を固定
+  // ハンバーガーメニュー展開時背景を固定、リサイズ対応
   // ------------------------------------
-  $(function () {
-    var state = false;
-    var pos;
-    $(".hamburger").click(function () {
-      if (state == false) {
-        pos = $(window).scrollTop();
-        $("body").addClass("fixed").css({ top: -pos });
-        state = true;
-      } else {
-        $("body").removeClass("fixed").css({ top: 0 });
-        window.scrollTo(0, pos);
-        state = false;
-      }
-    });
+$(function () {
+  var state = false;
+  var pos;
+
+  // ハンバーガークリックで開閉
+  $(".hamburger").click(function () {
+    if (state == false) {
+      pos = $(window).scrollTop();
+      $("body").addClass("fixed").css({ top: -pos });
+      $(".js-sp-nav").fadeIn(300); // メニュー表示
+      state = true;
+    } else {
+      $("body").removeClass("fixed").css({ top: 0 });
+      window.scrollTo(0, pos);
+      $(".js-sp-nav").fadeOut(300); // メニュー非表示
+      state = false;
+    }
   });
+
+  // メディアクエリ判定（例：768px以上でPC表示）
+  const mediaQuery = window.matchMedia("(min-width: 768px)");
+
+  // リサイズ時にメニューを閉じ、固定解除
+  $(window).on("resize", function () {
+    if (mediaQuery.matches && state) {
+      // メニューを閉じる
+      $(".js-header").removeClass("is-active");
+      $(".hamburger").removeClass("is-active");
+      $(".js-sp-nav").stop(true, true).hide();
+
+      // bodyの固定解除
+      $("body").removeClass("fixed").css({ top: 0 });
+      window.scrollTo(0, pos); // 元のスクロール位置に戻す
+
+      state = false; // 状態リセット
+    }
+  });
+});
+
 
   // ------------------------------------
   // mv Swiper
@@ -257,7 +245,7 @@ jQuery(function ($) {
         {
           scrollTop: 0,
         },
-        1000
+        10
       );
       return false;
     });
@@ -347,103 +335,3 @@ jQuery(function ($) {
 
 
 });
-
-
-// ------------------------------------
-// # オープニングアニメーション
-// ------------------------------------
-// ------------------------------------
-// # オープニングアニメーション
-// ------------------------------------
-// ------------------------------------
-// # オープニングアニメーション
-// ------------------------------------
-// ------------------------------------
-// # オープニングアニメーション
-// ------------------------------------
-window.addEventListener('DOMContentLoaded', function () {
-  const isFirstLoad = sessionStorage.getItem('isFirstLoad');
-  const opening = document.querySelector('.opening');
-  const header = document.querySelector('.header');
-
-  if (!isFirstLoad) {
-    // 初回アクセス時のみアニメーション
-    document.body.style.overflow = 'hidden';
-
-    let openingTL = gsap.timeline({
-      onComplete: function () {
-        document.body.style.overflow = '';//オープニングが終わるまでスクロールさせない
-        opening.style.display = 'none'; // アニメーション後に消す
-      }
-    });
-
-    openingTL
-      .to('.opening__logo', { autoAlpha: 1, duration: .5, delay: .2, ease: 'power3.out' })
-      .to('.opening__logo', { autoAlpha: 0, duration: .5, delay: 0.5, ease: 'power3.out' })
-      .to('.opening__left', { y: '-100%', ease: 'power2.out', duration: 2, delay: .3 })
-      .to('.opening__right', { y: '-100%', ease: 'power2.out', duration: 2 }, '<0.2')
-      .to('.opening__logo', { autoAlpha: 1, duration: 1, ease: 'power3.out' }, '-=.5')
-      .to('.opening__title , .opening__subtitle', { color: '#fff' }, '<')
-      .to('.opening__img-wrap', { autoAlpha: 0 }, '<')
-      .fromTo('.header',{y:'-100%'}, { y: '0%', ease: 'power3.out', delay: .3, duration: 1.5 })
-      .to('.opening', { autoAlpha: 0 }, '<');
-
-    sessionStorage.setItem('isFirstLoad', true);
-  } else {
-    // 2回目以降は最初から非表示にする
-    opening.style.display = 'none';
-    header.style.transform = 'translateY(0%)';
-  }
-});
-
-
-
-
-// window.addEventListener('DOMContentLoaded', function () {
-//   const isFirstLoad = sessionStorage.getItem('isFirstLoad');
-
-//   if (!isFirstLoad) {
-//     // opening を表示（is-hidden を外す）
-//     const opening = document.querySelector('.opening');
-//     if (opening) {
-//       opening.style.display = 'block';       // 強制表示
-//       opening.style.visibility = 'visible';  // チラつき防止
-//       opening.classList.remove('is-hidden');
-//     }
-
-//     // アニメーション中はスクロール禁止
-//     document.body.style.overflow = 'hidden';
-
-//     let openingTL = gsap.timeline({
-//       onComplete: function () {
-//         document.body.style.overflow = ''; // 解放
-//       }
-//     });
-
-//     openingTL
-//       .to('.opening__logo', { autoAlpha: 1, duration: .5, delay: .5, ease: 'power3.out' })
-//       .to('.opening__logo', { autoAlpha: 0, duration: .5, delay: 3, ease: 'power3.out' })
-//       .to('.opening__left', { y: '-100%', ease: 'power2.out', duration: 2, delay: .3 })
-//       .to('.opening__right', { y: '-100%', ease: 'power2.out', duration: 2 }, '<0.2')
-//       .to('.opening__logo', { autoAlpha: 1, duration: 1, ease: 'power3.out' }, '-=.5')
-//       .to('.opening__title , .opening__subtitle', { color: '#fff' }, '<')
-//       .to('.opening__img-wrap', { autoAlpha: 0 }, '<')
-//       .to('.header', { y: '0%', ease: 'power3.out', delay: .3, duration: 2 })
-//       .to('.opening', { autoAlpha: 0 }, '<');
-
-//     // セッションにフラグを保存
-//     sessionStorage.setItem('isFirstLoad', true);
-
-//   } else {
-//     // 2回目以降は opening を完全に削除
-//     const opening = document.querySelector('.opening');
-//     if (opening) {
-//       opening.remove();
-//     }
-//     const header = document.querySelector('.header');
-//     if (header) {
-//       header.style.transform = 'translateY(0%)';
-//     }
-//     document.body.style.overflow = ''; // 念のため
-//   }
-// });

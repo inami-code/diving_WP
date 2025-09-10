@@ -12,13 +12,13 @@
       <div class="sub-blog__content blog-cards blog-cards--2col">
         <?php if (have_posts()) : ?>
           <?php while (have_posts()): the_post(); ?>
-            <a href="<?php the_permalink();?>" class="blog-cards__item blog-card blog-card--widget">
+            <a href="<?php the_permalink(); ?>" class="blog-cards__item blog-card blog-card--widget">
               <figure class="blog-card__image blog-card__image--widget">
-              <?php if (get_the_post_thumbnail()): ?>
-                <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>のアイキャッチ画像" width="345" height="231">
-              <?php else: ?>
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/noimage.jpg" alt="noimage" width="345" height="231">
-              <?php endif; ?>
+                <?php if (get_the_post_thumbnail()): ?>
+                  <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>のアイキャッチ画像" width="345" height="231">
+                <?php else: ?>
+                  <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/noimage.jpg" alt="noimage" width="345" height="231">
+                <?php endif; ?>
               </figure>
               <div class="blog-card__body">
                 <time class="blog-card__date" datetime="<?php the_time('c'); ?>"><?php the_time('Y/m/d'); ?></time>
@@ -32,19 +32,19 @@
         <?php endif; ?>
       </div>
       <div class="sub-blog__pagination pagination">
-        <?php if(paginate_links()) :?>
-        <?php
-        echo paginate_links(
-          array(
-            'end_size' => 1,
-            'mid_size' => 2,
-            'prev_next' => true,
-            'prev_text' => '',
-            'next_text' => '',
-          )
-        );
-        ?>
-<?php endif; ?>
+        <?php if (paginate_links()) : ?>
+          <?php
+          echo paginate_links(
+            array(
+              'end_size' => 1,
+              'mid_size' => 2,
+              'prev_next' => true,
+              'prev_text' => '',
+              'next_text' => '',
+            )
+          );
+          ?>
+        <?php endif; ?>
       </div>
     </div>
     <?php get_sidebar(); ?>

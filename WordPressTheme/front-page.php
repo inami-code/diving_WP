@@ -1,5 +1,6 @@
 <?php get_header(); ?>
 
+<!-- オープニングアニメーション -->
 <div class="opening">
   <div class="opening__logo">
     <h2 class="opening__title">diving</h2>
@@ -89,7 +90,7 @@
             'orderby'         => 'date',              // ソートの基準を閲覧数に
             'order'           => 'DESC',              // 降順（閲覧数が多い順）でソート
             'post_status'     => 'publish',           // 投稿ステータスは公開済み
-            'posts_per_page'  => -1,                   // 投稿表示件数は5件
+            'posts_per_page'  => -1,
           ));
 
           if ($campaign_query->have_posts()):
