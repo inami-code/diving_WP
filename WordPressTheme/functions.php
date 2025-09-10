@@ -52,6 +52,15 @@ function add_custom_scripts()
         true
     );
 
+    // GSAP
+    wp_enqueue_script(
+        'gsap', 
+        'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js', // CDN URL
+        array(), 
+        '3.13.0', 
+        true 
+    );
+
     // Swiper JS
     wp_enqueue_script(
         'swiper-js',
@@ -99,17 +108,17 @@ add_action("after_setup_theme", "my_setup");
 /* リンク
 ---------------------------------------------------------- */
 // functions.php
-define('HOME_URL',    esc_url( home_url( '/' ) ));
-define('CAMPAIGN_URL', esc_url( home_url( '/campaign/' ) ));
-define('ABOUT_URL',    esc_url( home_url( '/about/' ) ));
-define('INFO_URL',     esc_url( home_url( '/information/' ) ));
-define('BLOG_URL',     esc_url( home_url( '/blog/' ) ));
-define('VOICE_URL',    esc_url( home_url( '/voice/' ) ));
-define('PRICE_URL',    esc_url( home_url( '/price/' ) ));
-define('FAQ_URL',      esc_url( home_url( '/faq/' ) ));
-define('CONTACT_URL',  esc_url( home_url( '/contact/' ) ));
-define('PRIVACY_URL',  esc_url( home_url( '/privacy/' ) ));
-define('TERMS_URL',    esc_url( home_url( '/terms/' ) ));
+define('HOME_URL',    esc_url(home_url('/')));
+define('CAMPAIGN_URL', esc_url(home_url('/campaign/')));
+define('ABOUT_URL',    esc_url(home_url('/about/')));
+define('INFO_URL',     esc_url(home_url('/information/')));
+define('BLOG_URL',     esc_url(home_url('/blog/')));
+define('VOICE_URL',    esc_url(home_url('/voice/')));
+define('PRICE_URL',    esc_url(home_url('/price/')));
+define('FAQ_URL',      esc_url(home_url('/faq/')));
+define('CONTACT_URL',  esc_url(home_url('/contact/')));
+define('PRIVACY_URL',  esc_url(home_url('/privacy/')));
+define('TERMS_URL',    esc_url(home_url('/terms/')));
 
 
 
@@ -126,121 +135,129 @@ add_filter('excerpt_more', 'my_excerpt_more');
 /* 人気記事一覧
 ---------------------------------------------------------- */
 //記事閲覧数を取得する
-function setPostViews($postID) {
-	$count_key = 'post_views_count';
-	$count = get_post_meta($postID, $count_key, true);
+function setPostViews($postID)
+{
+    $count_key = 'post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
 
-	if($count==""){
-		$count = 0;
-		delete_post_meta($postID, $count_key);
-		add_post_meta($postID, $count_key, '0');
-	} else {
-		$count++;
-		update_post_meta($postID, $count_key, $count);
-	}
+    if ($count == "") {
+        $count = 0;
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, '0');
+    } else {
+        $count++;
+        update_post_meta($postID, $count_key, $count);
+    }
 }
-remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 
 
 // クローラーカウントしない場合は追加
-function is_bot() {
-	$ua = $_SERVER['HTTP_USER_AGENT'];
-	
-	$bot = array(
-		'Googlebot',
-		'Yahoo! Slurp',
-		'Mediapartners-Google',
-		'msnbot',
-		'bingbot',
-		'MJ12bot',
-		'Ezooms',
-		'pirst; MSIE 8.0;',
-		'Google Web Preview',
-		'ia_archiver',
-		'Sogou web spider',
-		'Googlebot-Mobile',
-		'AhrefsBot',
-		'YandexBot',
-		'Purebot',
-		'Baiduspider',
-		'UnwindFetchor',
-		'TweetmemeBot',
-		'MetaURI',
-		'PaperLiBot',
-		'Showyoubot',
-		'JS-Kit',
-		'PostRank',
-		'Crowsnest',
-		'PycURL',
-		'bitlybot',
-		'Hatena',
-		'facebookexternalhit',
-		'NINJA bot',
-		'YahooCacheSystem',
-		'NHN Corp.',
-		'Steeler',
-		'DoCoMo',
-	);
+function is_bot()
+{
+    $ua = $_SERVER['HTTP_USER_AGENT'];
 
-	foreach( $bot as $bot ) {
-		if (stripos( $ua, $bot ) !== false){
-			return true;
-		}
-	}
-	
-	return false;	
+    $bot = array(
+        'Googlebot',
+        'Yahoo! Slurp',
+        'Mediapartners-Google',
+        'msnbot',
+        'bingbot',
+        'MJ12bot',
+        'Ezooms',
+        'pirst; MSIE 8.0;',
+        'Google Web Preview',
+        'ia_archiver',
+        'Sogou web spider',
+        'Googlebot-Mobile',
+        'AhrefsBot',
+        'YandexBot',
+        'Purebot',
+        'Baiduspider',
+        'UnwindFetchor',
+        'TweetmemeBot',
+        'MetaURI',
+        'PaperLiBot',
+        'Showyoubot',
+        'JS-Kit',
+        'PostRank',
+        'Crowsnest',
+        'PycURL',
+        'bitlybot',
+        'Hatena',
+        'facebookexternalhit',
+        'NINJA bot',
+        'YahooCacheSystem',
+        'NHN Corp.',
+        'Steeler',
+        'DoCoMo',
+    );
+
+    foreach ($bot as $bot) {
+        if (stripos($ua, $bot) !== false) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 // 閲覧数取得
-function getPostViews($postID){
-	$count_key = 'post_views_count';
-	$count = get_post_meta($postID, $count_key, true);
+function getPostViews($postID)
+{
+    $count_key = 'post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
 
-	if($count==""){ //カウントがなければ0をセット
-		delete_post_meta($postID, $count_key);
-		add_post_meta($postID, $count_key, '0');
-		return "0 View";
-	}
+    if ($count == "") { //カウントがなければ0をセット
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, '0');
+        return "0 View";
+    }
 
-	return $count.' Views';
+    return $count . ' Views';
 }
 // 投稿一覧に「閲覧数」カラムを追加
-function count_add_column( $columns ) {
+function count_add_column($columns)
+{
     $columns['views'] = '閲覧数';
     return $columns;
 }
-add_filter( 'manage_posts_columns', 'count_add_column' );
+add_filter('manage_posts_columns', 'count_add_column');
 
 // 投稿一覧に「閲覧数」を表示
-function count_add_column_data( $column, $post_id ) {
-    if ( $column === 'views' ) {
+function count_add_column_data($column, $post_id)
+{
+    if ($column === 'views') {
         echo getPostViews($post_id); // 閲覧数を取得して表示
     }
 }
-add_action( 'manage_posts_custom_column' , 'count_add_column_data', 10, 2 );
+add_action('manage_posts_custom_column', 'count_add_column_data', 10, 2);
 
 // 閲覧数カラムをソート可能にする
-function column_views_sortable($columns) {
+function column_views_sortable($columns)
+{
     $columns['views'] = 'views_sort'; // ソートキーを指定
     return $columns;
 }
-add_filter( 'manage_edit-post_sortable_columns', 'column_views_sortable' );
+add_filter('manage_edit-post_sortable_columns', 'column_views_sortable');
 
 // 実際のソート処理
-function my_add_sort_by_meta( $query ) {
-    if ( is_admin() && $query->is_main_query() && $query->get('orderby') === 'views_sort' ) {
-        $query->set( 'meta_key', 'post_views_count' );
-        $query->set( 'orderby', 'meta_value_num' );
+function my_add_sort_by_meta($query)
+{
+    if (is_admin() && $query->is_main_query() && $query->get('orderby') === 'views_sort') {
+        $query->set('meta_key', 'post_views_count');
+        $query->set('orderby', 'meta_value_num');
     }
 }
-add_action( 'pre_get_posts', 'my_add_sort_by_meta' );
+add_action('pre_get_posts', 'my_add_sort_by_meta');
 
 
 
 /* サイドバー
 ---------------------------------------------------------- */
 // 日付アーカイブ
-function my_custom_archives() {
+function my_custom_archives()
+{
     global $wpdb;
 
     // 年月ごとの投稿数を取得
@@ -265,57 +282,62 @@ function my_custom_archives() {
 }
 
 /* キャンペーンアーカイブとジャンル一覧の表示件数変更 */
-function change_posts_per_page_campaign($query) {
-    if ( is_admin() || ! $query->is_main_query() )
+function change_posts_per_page_campaign($query)
+{
+    if (is_admin() || ! $query->is_main_query())
         return;
 
-    if ( $query->is_post_type_archive('campaign') || $query->is_tax('campaign_genre') ) {
-        $query->set( 'posts_per_page', 4 ); 
+    if ($query->is_post_type_archive('campaign') || $query->is_tax('campaign_genre')) {
+        $query->set('posts_per_page', 4);
     }
 }
-add_action( 'pre_get_posts', 'change_posts_per_page_campaign' );
+add_action('pre_get_posts', 'change_posts_per_page_campaign');
 
 
 /* 私たちについてギャラリーの表示件数変更 */
-function change_posts_per_page_about($query) {
-    if ( is_admin() || ! $query->is_main_query() )
+function change_posts_per_page_about($query)
+{
+    if (is_admin() || ! $query->is_main_query())
         return;
-    if ( $query->is_post_type_archive('about') ) {
-        $query->set( 'posts_per_page', -1 ); // ← -1 だと無限表示
+    if ($query->is_post_type_archive('about')) {
+        $query->set('posts_per_page', -1); // ← -1 だと無限表示
     }
 }
-add_action( 'pre_get_posts', 'change_posts_per_page_about' );
+add_action('pre_get_posts', 'change_posts_per_page_about');
 
 
 /* お客様の声ギャラリーの表示件数変更 */
-function change_posts_per_page_voice($query) {
-    if ( is_admin() || ! $query->is_main_query() )
+function change_posts_per_page_voice($query)
+{
+    if (is_admin() || ! $query->is_main_query())
         return;
-    if ( $query->is_post_type_archive('voice') ) {
-        $query->set( 'posts_per_page', 6 ); // ← -1 だと無限表示
+    if ($query->is_post_type_archive('voice')) {
+        $query->set('posts_per_page', 6); // ← -1 だと無限表示
     }
 }
-add_action( 'pre_get_posts', 'change_posts_per_page_voice' );
+add_action('pre_get_posts', 'change_posts_per_page_voice');
 
 
 /* コンタクトフォーム
 ---------------------------------------------------------- */
 // Contact Form 7で自動挿入されるPタグ、brタグを削除
 add_filter('wpcf7_autop_or_not', 'wpcf7_autop_return_false');
-function wpcf7_autop_return_false() {
-  return false;
+function wpcf7_autop_return_false()
+{
+    return false;
 }
 
 // サンクスページへリダイレクト
-function redirect_to_thanks_page() {
-	if ( is_page( 'contact' ) ) {
-		echo <<<EOD
+function redirect_to_thanks_page()
+{
+    if (is_page('contact')) {
+        echo <<<EOD
 		<script>
 		document.addEventListener( 'wpcf7mailsent', function() {
 			window.location = '/contact/thanks/';
 		});
 		</script>
 		EOD;
-	}
+    }
 }
-add_action( 'wp_footer', 'redirect_to_thanks_page' );
+add_action('wp_footer', 'redirect_to_thanks_page');

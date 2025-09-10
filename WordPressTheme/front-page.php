@@ -1,49 +1,34 @@
 <?php get_header(); ?>
 
+<div class="opening">
+  <div class="opening__logo">
+    <h2 class="opening__title">diving</h2>
+    <p class="opening__subtitle">into the ocean</p>
+  </div>
+
+  <div class="opening__img-mask">
+    <span class="opening__left">
+    </span>
+    <span class="opening__right">
+    </span>
+  </div>
+  <div class="opening__img-wrap">
+    <img
+      src="<?php echo get_theme_file_uri(); ?>/assets/images/common/mv_pc1.jpg"
+      alt="亀の画像"
+      width="720"
+      height="768">
+  </div>
+
+
+</div>
+
 <div class="mv">
   <div class="mv__inner">
     <div class="mv__header">
       <h2 class="mv__title">diving</h2>
       <p class="mv__subtitle">into the ocean</p>
     </div>
-    <!-- <div class="mv__header-movie mv-movie">
-      <div class="mv-movie__text">
-        <h2 class="mv-movie__title">diving</h2>
-        <p class="mv-movie__subtitle">into the ocean</p>
-      </div>
-    </div> -->
-
-    <!-- <div class="mv__bg-movie mv-movie-bg">
-          <div class="mv-movie-bg__container">
-            <div class="mv-movie-bg__left-image">
-              <picture>
-                <source
-                  srcset="./assets/images/common/mv_movie-left.webp"
-                  type="image/webp">
-                <img
-                  src="./assets/images/common/mv_movie-left.jpg"
-                  alt="アニメーション左の画像"
-                  width="720"
-                  height="768"
-                  loading="lazy"
-             ></picture>
-            </div>
-            <div class="mv-movie-bg__right-image">
-              <picture>
-                <source
-                  srcset="./assets/images/common/mv_movie-right.webp"
-                  type="image/webp">
-                <img
-                  src="./assets/images/common/mv_movie-right.jpg"
-                  alt="アニメーション右の画像"
-                  width="720"
-                  height="768"
-                  loading="lazy"
-             ></picture>
-            </div>
-          </div>
-          <div class="mv-movie-bg__white"></div>
-        </div> -->
 
     <div id="movie" class="swiper mv__swiper js-mv-swiper">
       <div class="swiper-wrapper">
@@ -360,84 +345,63 @@
         </picture>
       </div>
       <div class="price__menu">
-        <div class="price__content">
-          <h3 class="price__head">ライセンス講習</h3>
-          <dl class="price__lists">
-            <div class="price__lists-flex">
-              <dt class="price__list-title">
-                オープンウォーターダイバーコース
-              </dt>
-              <dd class="price__list-price">¥50,000</dd>
-            </div>
-            <div class="price__lists-flex">
-              <dt class="price__list-title">
-                アドバンスドオープンウォーターコース
-              </dt>
-              <dd class="price__list-price">¥60,000</dd>
-            </div>
-            <div class="price__lists-flex">
-              <dt class="price__list-title">レスキュー＋EFRコース</dt>
-              <dd class="price__list-price">¥70,000</dd>
-            </div>
-          </dl>
-        </div>
-        <div class="price__content">
-          <h3 class="price__head">体験ダイビング</h3>
-          <dl class="price__lists">
-            <div class="price__lists-flex">
-              <dt class="price__list-title">ビーチ体験ダイビング(半日)</dt>
-              <dd class="price__list-price">¥7,000</dd>
-            </div>
-            <div class="price__lists-flex">
-              <dt class="price__list-title">ビーチ体験ダイビング(1日)</dt>
-              <dd class="price__list-price">¥14,000</dd>
-            </div>
-            <div class="price__lists-flex">
-              <dt class="price__list-title">ボート体験ダイビング(半日)</dt>
-              <dd class="price__list-price">¥10,000</dd>
-            </div>
-            <div class="price__lists-flex">
-              <dt class="price__list-title">ボート体験ダイビング(1日)</dt>
-              <dd class="price__list-price">¥18,000</dd>
-            </div>
-          </dl>
-        </div>
-        <div class="price__content">
-          <h3 class="price__head">ファンダイビング</h3>
-          <dl class="price__lists">
-            <div class="price__lists-flex">
-              <dt class="price__list-title">ビーチダイビング(2ダイブ)</dt>
-              <dd class="price__list-price">¥14,000</dd>
-            </div>
-            <div class="price__lists-flex">
-              <dt class="price__list-title">ボートダイビング(2ダイブ)</dt>
-              <dd class="price__list-price">¥18,000</dd>
-            </div>
-            <div class="price__lists-flex">
-              <dt class="price__list-title">
-                スペシャルダイビング(2ダイブ)
-              </dt>
-              <dd class="price__list-price">¥24,000</dd>
-            </div>
-            <div class="price__lists-flex">
-              <dt class="price__list-title">ナイトダイビング(1ダイブ)</dt>
-              <dd class="price__list-price">¥10,000</dd>
-            </div>
-          </dl>
-        </div>
-        <div class="price__content">
-          <h3 class="price__head">スペシャルダイビング</h3>
-          <dl class="price__lists">
-            <div class="price__lists-flex">
-              <dt class="price__list-title">貸切ダイビング(2ダイブ)</dt>
-              <dd class="price__list-price">¥24,000</dd>
-            </div>
-            <div class="price__lists-flex">
-              <dt class="price__list-title">1日ダイビング(3ダイブ)</dt>
-              <dd class="price__list-price">¥32,000</dd>
-            </div>
-          </dl>
-        </div>
+
+        <?php
+        $price_query = new WP_Query(array(
+          'post_type'       => 'price',          // 投稿タイプを指定
+          'meta_key'        => 'post_views_count',  // 閲覧数を指定
+          'orderby'         => 'date',              // ソートの基準を閲覧数に
+          'order'           => 'DESC',              // 降順（閲覧数が多い順）でソート
+          'post_status'     => 'publish',           // 投稿ステータスは公開済み
+          'posts_per_page'  => -1,                   // 投稿表示件数は5件
+        ));
+
+        if ($price_query->have_posts()):
+        ?>
+          <?php while ($price_query->have_posts()): $price_query->the_post(); ?>
+
+
+            <?php
+            // フィールドをすべて取得
+            $courses = [
+              ['course' => get_field('course'), 'price' => get_field('price')],
+              ['course' => get_field('course2'), 'price' => get_field('price2')],
+              ['course' => get_field('course3'), 'price' => get_field('price3')],
+              ['course' => get_field('course4'), 'price' => get_field('price4')],
+              ['course' => get_field('course5'), 'price' => get_field('price5')],
+            ];
+
+            // 表示できる項目があるか確認
+            $has_content = false;
+            foreach ($courses as $item) {
+              if ($item['course'] && $item['price']) {
+                $has_content = true;
+                break;
+              }
+            }
+            ?>
+            <?php if ($has_content) : ?>
+              <div class="price__content">
+                <h3 class="price__head"><?php the_title(); ?></h3>
+                <dl class="price__lists">
+                  <?php foreach ($courses as $item) : ?>
+                    <?php if ($item['course'] && $item['price']) : ?>
+                      <div class="price__lists-flex">
+                        <dt class="price__list-title">
+                          <?php echo esc_html($item['course']); ?>
+                        </dt>
+                        <dd class="price__list-price">¥<?php echo esc_html($item['price']); ?></dd>
+                      </div>
+                    <?php endif; ?>
+                  <?php endforeach; ?>
+                </dl>
+              <?php endif; ?>
+              </div>
+            <?php endwhile; ?>
+          <?php else: ?>
+            現在、料金の表示はありません。
+          <?php endif; ?>
+          <?php wp_reset_postdata(); ?>
       </div>
     </div>
     <div class="price__button">

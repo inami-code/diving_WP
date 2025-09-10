@@ -361,3 +361,123 @@ jQuery(function ($) {
     $(this).children('.faq-box__icon').toggleClass('is-close');
   });
 });
+
+// ------------------------------------
+// # オープニングアニメーション
+// ------------------------------------
+// ------------------------------------
+// # オープニングアニメーション
+// ------------------------------------
+// ------------------------------------
+// # オープニングアニメーション
+// ------------------------------------
+// ------------------------------------
+// # オープニングアニメーション
+// ------------------------------------
+window.addEventListener('DOMContentLoaded', function () {
+  var isFirstLoad = sessionStorage.getItem('isFirstLoad');
+  var opening = document.querySelector('.opening');
+  var header = document.querySelector('.header');
+  if (!isFirstLoad) {
+    // 初回アクセス時のみアニメーション
+    document.body.style.overflow = 'hidden';
+    var openingTL = gsap.timeline({
+      onComplete: function onComplete() {
+        document.body.style.overflow = ''; //オープニングが終わるまでスクロールさせない
+        opening.style.display = 'none'; // アニメーション後に消す
+      }
+    });
+
+    openingTL.to('.opening__logo', {
+      autoAlpha: 1,
+      duration: .5,
+      delay: .2,
+      ease: 'power3.out'
+    }).to('.opening__logo', {
+      autoAlpha: 0,
+      duration: .5,
+      delay: 0.5,
+      ease: 'power3.out'
+    }).to('.opening__left', {
+      y: '-100%',
+      ease: 'power2.out',
+      duration: 2,
+      delay: .3
+    }).to('.opening__right', {
+      y: '-100%',
+      ease: 'power2.out',
+      duration: 2
+    }, '<0.2').to('.opening__logo', {
+      autoAlpha: 1,
+      duration: 1,
+      ease: 'power3.out'
+    }, '-=.5').to('.opening__title , .opening__subtitle', {
+      color: '#fff'
+    }, '<').to('.opening__img-wrap', {
+      autoAlpha: 0
+    }, '<').fromTo('.header', {
+      y: '-100%'
+    }, {
+      y: '0%',
+      ease: 'power3.out',
+      delay: .3,
+      duration: 1.5
+    }).to('.opening', {
+      autoAlpha: 0
+    }, '<');
+    sessionStorage.setItem('isFirstLoad', true);
+  } else {
+    // 2回目以降は最初から非表示にする
+    opening.style.display = 'none';
+    header.style.transform = 'translateY(0%)';
+  }
+});
+
+// window.addEventListener('DOMContentLoaded', function () {
+//   const isFirstLoad = sessionStorage.getItem('isFirstLoad');
+
+//   if (!isFirstLoad) {
+//     // opening を表示（is-hidden を外す）
+//     const opening = document.querySelector('.opening');
+//     if (opening) {
+//       opening.style.display = 'block';       // 強制表示
+//       opening.style.visibility = 'visible';  // チラつき防止
+//       opening.classList.remove('is-hidden');
+//     }
+
+//     // アニメーション中はスクロール禁止
+//     document.body.style.overflow = 'hidden';
+
+//     let openingTL = gsap.timeline({
+//       onComplete: function () {
+//         document.body.style.overflow = ''; // 解放
+//       }
+//     });
+
+//     openingTL
+//       .to('.opening__logo', { autoAlpha: 1, duration: .5, delay: .5, ease: 'power3.out' })
+//       .to('.opening__logo', { autoAlpha: 0, duration: .5, delay: 3, ease: 'power3.out' })
+//       .to('.opening__left', { y: '-100%', ease: 'power2.out', duration: 2, delay: .3 })
+//       .to('.opening__right', { y: '-100%', ease: 'power2.out', duration: 2 }, '<0.2')
+//       .to('.opening__logo', { autoAlpha: 1, duration: 1, ease: 'power3.out' }, '-=.5')
+//       .to('.opening__title , .opening__subtitle', { color: '#fff' }, '<')
+//       .to('.opening__img-wrap', { autoAlpha: 0 }, '<')
+//       .to('.header', { y: '0%', ease: 'power3.out', delay: .3, duration: 2 })
+//       .to('.opening', { autoAlpha: 0 }, '<');
+
+//     // セッションにフラグを保存
+//     sessionStorage.setItem('isFirstLoad', true);
+
+//   } else {
+//     // 2回目以降は opening を完全に削除
+//     const opening = document.querySelector('.opening');
+//     if (opening) {
+//       opening.remove();
+//     }
+//     const header = document.querySelector('.header');
+//     if (header) {
+//       header.style.transform = 'translateY(0%)';
+//     }
+//     document.body.style.overflow = ''; // 念のため
+//   }
+// });

@@ -1899,6 +1899,7 @@ textarea {
 	left: 0;
 	position: fixed;
 	top: 0;
+	transform: translateY(0%);
 	transition: background-color 0.3s;
 	width: 100%;
 	z-index: 100;
@@ -2040,10 +2041,6 @@ textarea {
 	width: 100%;
 }
 
-.mv__bg-movie {
-	position: absolute;
-}
-
 .mv__header {
 	content: "";
 	left: 50%;
@@ -2090,6 +2087,103 @@ textarea {
 	height: 100vh;
 	object-fit: cover;
 	width: 100%;
+}
+
+.opening {
+	display: block;
+	height: 100vh;
+	left: 0;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 100;
+}
+
+.opening__first {
+	height: 100vh;
+	width: 100%;
+}
+
+.opening__mask {
+	background-color: #fff;
+	display: block;
+	height: 100vh;
+	width: 100%;
+}
+
+.opening__logo {
+	content: "";
+	left: 50%;
+	opacity: 0;
+	position: absolute;
+	top: 49.8%;
+	transform: translate(-50%, -50%);
+	visibility: hidden;
+	width: 100%;
+	z-index: 10;
+}
+
+.opening__title {
+	color: #408F95;
+	font-family: "Lato", sans-serif;
+	font-size: 2.5rem;
+	font-weight: 400;
+	letter-spacing: 0.52em;
+	line-height: 1.1;
+	text-align: center;
+	text-indent: 0.52em;
+	text-transform: uppercase;
+}
+
+.opening__subtitle {
+	color: #408F95;
+	font-family: "Gotu", sans-serif;
+	font-size: 1.25rem;
+	line-height: 1;
+	margin-top: 0.5rem;
+	text-align: center;
+}
+
+.opening__img-wrap {
+	height: 100vh;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.opening__img-wrap img {
+	-o-object-fit: cover;
+	aspect-ratio: 375/667;
+	display: block;
+	height: 100vh;
+	object-fit: cover;
+	width: 100%;
+}
+
+.opening__img-mask {
+	display: flex;
+	height: 100vh;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 1;
+}
+
+.opening__left {
+	background-color: #fff;
+	display: block;
+	transform: translateY(0%);
+	width: 50%;
+}
+
+.opening__right {
+	background-color: #fff;
+	display: block;
+	transform: translateY(0%);
+	width: 50%;
 }
 
 .page-blog__date {
@@ -3103,6 +3197,18 @@ textarea {
 
 }
 
+@media (scripting: none) {
+
+.opening {
+	display: none;
+}
+
+.opening.is-hidden {
+	display: block;
+}
+
+}
+
 @media screen and (min-width: 768px) {
 
 .u-desktop {
@@ -4056,6 +4162,22 @@ select {
 }
 
 .mv__image {
+	aspect-ratio: 1440/768;
+}
+
+.opening__logo {
+	top: 55.8%;
+}
+
+.opening__title {
+	font-size: 5rem;
+}
+
+.opening__subtitle {
+	margin-top: 0.75rem;
+}
+
+.opening__img-wrap img {
 	aspect-ratio: 1440/768;
 }
 

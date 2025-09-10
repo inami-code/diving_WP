@@ -14,7 +14,7 @@
 </head>
 
 <body>
-  <header class="header js-header">
+  <header class="header js-header js-animation">
     <div class="header__inner">
       <?php if (is_front_page()) : ?>
         <h1 class="header__logo">

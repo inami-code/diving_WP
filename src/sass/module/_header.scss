@@ -9,6 +9,7 @@
   height: rem(80);
   width: 100%;
   transition: background-color 0.3s;
+  transform: translateY(-0%);
 
   @include mq("md") {
     height: rem(90);
